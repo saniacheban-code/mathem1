@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Определенный интеграл и площадь криволинейной трапеции</title>
+    <title>Интерактивный урок: Определенный интеграл и площадь криволинейной трапеции</title>
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -26,7 +26,7 @@
         }
     </script>
 
-    <!-- KaTeX CSS and JS for flawless rendering of mathematical formulas -->
+    <!-- KaTeX CSS and JS for mathematical formula rendering -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
@@ -57,31 +57,27 @@
                 </div>
             </div>
 
-            <!-- Student ID Section at the top -->
-            <div class="flex items-center gap-3 bg-slate-900/80 p-2 rounded-xl border border-slate-700/80">
-                <div class="flex items-center gap-2">
-                    <i data-lucide="user" class="w-4 h-4 text-brand-500"></i>
-                    <input type="text" id="studentFIO" placeholder="Ф.И.О. ученика *" 
-                        class="bg-slate-800 border border-slate-600 rounded-md px-3 py-1 text-sm text-white placeholder-slate-400 focus:outline-none focus:border-brand-500 w-48 sm:w-60 transition">
+            <!-- Student Active Info Display (Updated after registration) -->
+            <div id="studentHeaderBadge" class="hidden items-center gap-3 bg-slate-900/80 px-3 py-1.5 rounded-xl border border-slate-700/80 text-xs">
+                <div class="flex items-center gap-1.5 text-brand-400 font-semibold">
+                    <i data-lucide="user" class="w-3.5 h-3.5"></i>
+                    <span id="activeStudentName">—</span>
                 </div>
-                <div class="flex items-center gap-2">
-                    <i data-lucide="users" class="w-4 h-4 text-brand-500"></i>
-                    <input type="text" id="studentClass" placeholder="Класс (напр. 11-А) *" 
-                        class="bg-slate-800 border border-slate-600 rounded-md px-3 py-1 text-sm text-white placeholder-slate-400 focus:outline-none focus:border-brand-500 w-28 sm:w-32 transition">
-                </div>
+                <div class="text-slate-500">•</div>
+                <div class="text-slate-300 font-mono" id="activeStudentClass">—</div>
             </div>
         </div>
     </header>
 
-    <main class="flex-1 max-w-5xl w-full mx-auto p-4 sm:p-6 flex flex-col justify-center">
+    <main class="flex-1 max-w-4xl w-full mx-auto p-4 sm:p-6 flex flex-col justify-center">
         <!-- Progress Bar -->
         <div class="mb-4">
             <div class="flex justify-between items-center text-xs text-slate-400 mb-2">
-                <span id="slideCategory" class="uppercase tracking-wider font-semibold text-brand-500">Теоретический материал</span>
-                <span id="slideCounter" class="font-mono">Слайд 1 из 10</span>
+                <span id="slideCategory" class="uppercase tracking-wider font-semibold text-brand-500">Регистрация ученика</span>
+                <span id="slideCounter" class="font-mono">Шаг 1 из 11</span>
             </div>
             <div class="w-full bg-slate-800 rounded-full h-2 overflow-hidden border border-slate-700">
-                <div id="progressBar" class="bg-gradient-to-r from-brand-600 to-cyan-400 h-2 rounded-full transition-all duration-300 w-[10%]"></div>
+                <div id="progressBar" class="bg-gradient-to-r from-brand-600 to-cyan-400 h-2 rounded-full transition-all duration-300 w-[9%]"></div>
             </div>
         </div>
 
@@ -90,8 +86,49 @@
             
             <div id="slidesContainer" class="flex-1">
 
-                <!-- SLIDE 1 -->
-                <div class="slide slide-enter space-y-4">
+                <!-- SLIDE 0: REGISTRATION / START -->
+                <div class="slide slide-enter space-y-6">
+                    <div class="text-center max-w-xl mx-auto space-y-3 pt-2">
+                        <div class="inline-flex p-3 bg-brand-500/10 text-brand-400 rounded-2xl border border-brand-500/20 mb-2">
+                            <i data-lucide="graduation-cap" class="w-10 h-10"></i>
+                        </div>
+                        <h2 class="text-2xl sm:text-3xl font-bold text-white">Добро пожаловать на урок!</h2>
+                        <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+                            Перед началом прохождения теоретического материала и итогового тестирования, пожалуйста, укажите ваши данные:
+                        </p>
+                    </div>
+
+                    <div class="max-w-md mx-auto bg-slate-900/90 p-6 rounded-2xl border border-slate-700/80 space-y-4 shadow-inner">
+                        <div class="space-y-1.5">
+                            <label for="studentFIO" class="text-xs font-semibold uppercase tracking-wider text-slate-300 flex items-center gap-1.5">
+                                <i data-lucide="user" class="w-3.5 h-3.5 text-brand-500"></i> Фамилия и Имя ученика <span class="text-rose-400">*</span>
+                            </label>
+                            <input type="text" id="studentFIO" placeholder="Например: Иванов Иван" 
+                                class="w-full bg-slate-800 border border-slate-600 rounded-xl px-4 py-2.5 text-sm text-white placeholder-slate-400 focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition">
+                        </div>
+
+                        <div class="space-y-1.5">
+                            <label for="studentClass" class="text-xs font-semibold uppercase tracking-wider text-slate-300 flex items-center gap-1.5">
+                                <i data-lucide="users" class="w-3.5 h-3.5 text-brand-500"></i> Класс / Группа <span class="text-rose-400">*</span>
+                            </label>
+                            <input type="text" id="studentClass" placeholder="Например: 11-А" 
+                                class="w-full bg-slate-800 border border-slate-600 rounded-xl px-4 py-2.5 text-sm text-white placeholder-slate-400 focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition">
+                        </div>
+
+                        <div id="registrationError" class="hidden text-xs text-rose-400 font-medium bg-rose-500/10 p-3 rounded-lg border border-rose-500/20 text-center">
+                            ⚠️ Пожалуйста, заполните оба поля для входа в урок!
+                        </div>
+
+                        <button type="button" onclick="startLesson()" 
+                            class="w-full py-3 bg-brand-600 hover:bg-brand-500 text-white font-bold rounded-xl shadow-lg transition flex items-center justify-center gap-2 mt-2">
+                            <span>Начать урок</span>
+                            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- SLIDE 1: THEORY 1 -->
+                <div class="slide hidden slide-enter space-y-4">
                     <div class="inline-flex items-center gap-2 px-3 py-1 bg-brand-500/10 text-brand-400 border border-brand-500/20 rounded-full text-xs font-semibold">
                         Урок 1 • Введение
                     </div>
@@ -106,19 +143,19 @@
                     </ul>
                     <div class="p-4 bg-brand-900/30 border-l-4 border-brand-500 rounded-r-xl">
                         <p class="text-sm text-brand-200">
-                            <strong>Отрезок $[a; b]$</strong> называется <em>основанием</em> криволинейной трапеции. Если $f(x) \ge 0$, то площадь этой фигуры является положительной величиной.
+                            <strong>Отрезок $[a; b]$</strong> называется <em>основанием</em> криволинейной трапеции. Если $f(x) \ge 0$, то площадь этой фигуры всегда является неотрицательной величиной.
                         </p>
                     </div>
                 </div>
 
-                <!-- SLIDE 2 -->
+                <!-- SLIDE 2: THEORY 2 -->
                 <div class="slide hidden slide-enter space-y-4">
                     <div class="inline-flex items-center gap-2 px-3 py-1 bg-brand-500/10 text-brand-400 border border-brand-500/20 rounded-full text-xs font-semibold">
                         Урок 2 • Геометрический смысл
                     </div>
                     <h2 class="text-2xl sm:text-3xl font-bold text-white">2. Задача о вычислении площади</h2>
                     <p class="text-slate-300 leading-relaxed">
-                        Чтобы точно найти площадь $S$ криволинейной трапеции, используется метод приближения прямоугольниками (суммы Римана):
+                        Чтобы точно найти площадь $S$ криволинейной трапеции, применяется метод приближения прямоугольниками (суммы Римана):
                     </p>
                     <ol class="space-y-3 text-slate-300 list-decimal list-inside bg-slate-900/50 p-4 rounded-xl border border-slate-700/50">
                         <li>Разбиваем отрезок $[a; b]$ на $n$ равных элементарных отрезков длиной $\Delta x = \frac{b - a}{n}$.</li>
@@ -130,7 +167,7 @@
                     </p>
                 </div>
 
-                <!-- SLIDE 3 -->
+                <!-- SLIDE 3: THEORY 3 -->
                 <div class="slide hidden slide-enter space-y-4">
                     <div class="inline-flex items-center gap-2 px-3 py-1 bg-brand-500/10 text-brand-400 border border-brand-500/20 rounded-full text-xs font-semibold">
                         Урок 3 • Определение
@@ -158,7 +195,7 @@
                     </div>
                 </div>
 
-                <!-- SLIDE 4 -->
+                <!-- SLIDE 4: THEORY 4 -->
                 <div class="slide hidden slide-enter space-y-4">
                     <div class="inline-flex items-center gap-2 px-3 py-1 bg-brand-500/10 text-brand-400 border border-brand-500/20 rounded-full text-xs font-semibold">
                         Урок 4 • Главная формула
@@ -177,7 +214,7 @@
                     </div>
                 </div>
 
-                <!-- SLIDE 5 -->
+                <!-- SLIDE 5: THEORY 5 -->
                 <div class="slide hidden slide-enter space-y-4">
                     <div class="inline-flex items-center gap-2 px-3 py-1 bg-brand-500/10 text-brand-400 border border-brand-500/20 rounded-full text-xs font-semibold">
                         Урок 5 • Свойства
@@ -199,7 +236,7 @@
                     </div>
                 </div>
 
-                <!-- SLIDE 6 -->
+                <!-- SLIDE 6: THEORY 6 -->
                 <div class="slide hidden slide-enter space-y-4">
                     <div class="inline-flex items-center gap-2 px-3 py-1 bg-brand-500/10 text-brand-400 border border-brand-500/20 rounded-full text-xs font-semibold">
                         Урок 6 • Алгоритм решения
@@ -225,7 +262,7 @@
                     </div>
                 </div>
 
-                <!-- SLIDE 7 -->
+                <!-- SLIDE 7: EXAMPLE 1 -->
                 <div class="slide hidden slide-enter space-y-4">
                     <div class="inline-flex items-center gap-2 px-3 py-1 bg-amber-500/10 text-amber-400 border border-amber-500/20 rounded-full text-xs font-semibold">
                         Пример 1 • Разбор задачи
@@ -248,7 +285,7 @@
                     </div>
                 </div>
 
-                <!-- SLIDE 8 -->
+                <!-- SLIDE 8: EXAMPLE 2 -->
                 <div class="slide hidden slide-enter space-y-4">
                     <div class="inline-flex items-center gap-2 px-3 py-1 bg-amber-500/10 text-amber-400 border border-amber-500/20 rounded-full text-xs font-semibold">
                         Пример 2 • Тригонометрия
@@ -274,7 +311,7 @@
                     </div>
                 </div>
 
-                <!-- SLIDE 9 -->
+                <!-- SLIDE 9: QUIZ -->
                 <div class="slide hidden slide-enter space-y-4">
                     <div class="inline-flex items-center gap-2 px-3 py-1 bg-purple-500/10 text-purple-400 border border-purple-500/20 rounded-full text-xs font-semibold">
                         Контроль • Тестовая часть (5 баллов)
@@ -364,7 +401,7 @@
                     </form>
                 </div>
 
-                <!-- SLIDE 10 -->
+                <!-- SLIDE 10: TASKS & FINAL SUBMIT -->
                 <div class="slide hidden slide-enter space-y-4">
                     <div class="inline-flex items-center gap-2 px-3 py-1 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 rounded-full text-xs font-semibold">
                         Завершение • Практические задачи (5 баллов)
@@ -404,7 +441,7 @@
             </div>
 
             <!-- Controls Footer -->
-            <div class="flex items-center justify-between pt-6 mt-6 border-t border-slate-700/80">
+            <div id="controlsFooter" class="flex items-center justify-between pt-6 mt-6 border-t border-slate-700/80">
                 <button id="prevBtn" onclick="navigateSlide(-1)" 
                     class="px-4 py-2 bg-slate-700 hover:bg-slate-600 text-white rounded-xl text-sm font-semibold transition flex items-center gap-2 disabled:opacity-40 disabled:cursor-not-allowed">
                     <i data-lucide="chevron-left" class="w-4 h-4"></i> Назад
@@ -422,8 +459,8 @@
     </main>
 
     <script>
-        // Google Apps Script Web App Endpoint provided by user
-        const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycby9zRXh0fP2OlHhRjiVamXw9H7lKTgSJDGye5w10IVFVEsdJdnqG7aCBNl0GHBeJNxEpg/exec";
+        // Updated Google Apps Script Web App Endpoint provided by user
+        const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzmsGiQ31IYfanqd59u09-L4Nn3MEQvvKDBSHM4_YWqp3S9Y1It4sSZHy3cnS6vqw14PA/exec";
 
         let currentSlide = 0;
         const slides = document.querySelectorAll('.slide');
@@ -435,19 +472,46 @@
         const dotsContainer = document.getElementById('dotsContainer');
 
         const slideCategories = [
+            "Регистрация ученика",
             "Теоретический материал", "Теоретический материал", "Теоретический материал",
             "Теоретический материал", "Теоретический материал", "Теоретический материал",
             "Разбор примеров", "Разбор примеров",
             "Тестирование", "Практические задания"
         ];
 
-        // Generate slide dots
+        // Generate slide dots for slides 1 to N
         slides.forEach((_, idx) => {
             const dot = document.createElement('div');
             dot.className = `w-2 h-2 rounded-full transition-all cursor-pointer ${idx === 0 ? 'bg-brand-500 w-4' : 'bg-slate-600'}`;
-            dot.onclick = () => jumpToSlide(idx);
+            dot.onclick = () => {
+                if (idx > 0 && (!document.getElementById('studentFIO').value.trim() || !document.getElementById('studentClass').value.trim())) {
+                    return; // Prevent skipping registration via dots
+                }
+                jumpToSlide(idx);
+            };
             dotsContainer.appendChild(dot);
         });
+
+        function startLesson() {
+            const fio = document.getElementById('studentFIO').value.trim();
+            const group = document.getElementById('studentClass').value.trim();
+            const regError = document.getElementById('registrationError');
+
+            if (!fio || !group) {
+                regError.classList.remove('hidden');
+                return;
+            }
+
+            regError.classList.add('hidden');
+            
+            // Update Top Header Badge
+            document.getElementById('activeStudentName').innerText = fio;
+            document.getElementById('activeStudentClass').innerText = group;
+            document.getElementById('studentHeaderBadge').classList.remove('hidden');
+            document.getElementById('studentHeaderBadge').classList.add('flex');
+
+            navigateSlide(1);
+        }
 
         function renderMath() {
             if (window.renderMathInElement) {
@@ -472,8 +536,8 @@
                 }
             });
 
-            // Update Header & Bar
-            slideCounter.innerText = `Слайд ${currentSlide + 1} из ${slides.length}`;
+            // Update Header & Progress Bar
+            slideCounter.innerText = `Шаг ${currentSlide + 1} из ${slides.length}`;
             slideCategory.innerText = slideCategories[currentSlide] || "Презентация";
             
             const progressPercent = ((currentSlide + 1) / slides.length) * 100;
@@ -497,6 +561,15 @@
         }
 
         function navigateSlide(direction) {
+            const fio = document.getElementById('studentFIO').value.trim();
+            const group = document.getElementById('studentClass').value.trim();
+
+            // Block moving forward if registration is incomplete
+            if (currentSlide === 0 && direction > 0 && (!fio || !group)) {
+                document.getElementById('registrationError').classList.remove('hidden');
+                return;
+            }
+
             currentSlide += direction;
             if (currentSlide < 0) currentSlide = 0;
             if (currentSlide >= slides.length) currentSlide = slides.length - 1;
@@ -546,8 +619,7 @@
 
             if (!studentFIO || !studentClass) {
                 banner.className = "p-4 rounded-xl text-sm font-medium bg-amber-500/20 text-amber-300 border border-amber-500/40 block";
-                banner.innerText = "⚠️ Пожалуйста, укажите ваши Ф.И.О. и Класс в верхней панели!";
-                window.scrollTo({ top: 0, behavior: 'smooth' });
+                banner.innerText = "⚠️ Ошибка: Данные ученика не заполнены. Пожалуйста, вернитесь на Слайд 1.";
                 return;
             }
 
@@ -579,7 +651,7 @@
             .then(() => {
                 banner.className = "p-4 rounded-xl text-sm font-medium bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 block";
                 banner.innerHTML = `
-                    <div class="font-bold text-base mb-1">🎉 Ответы успешно сохранены!</div>
+                    <div class="font-bold text-base mb-1">🎉 Ответы успешно сохранены в Google Таблицу!</div>
                     <div>Ученик: <strong>${studentFIO}</strong> (${studentClass})</div>
                     <div>Итоговый балл: <strong>${scores.totalScore} из 10</strong> (Тест: ${scores.quizScore}/5, Задания: ${scores.taskScore}/5)</div>
                 `;
@@ -593,7 +665,7 @@
             });
         }
 
-        // Initialize KaTeX rendering on initial page load
+        // Initialize math and icon rendering on page load
         window.addEventListener('DOMContentLoaded', () => {
             renderMath();
             lucide.createIcons();
@@ -602,9 +674,3 @@
     </script>
 </body>
 </html>
-```
-
-### Summary of Improvements Made:
-1. **Mathematical Symbol Clarity:** Integrated KaTeX with automated delimiters (`$`, `$$`, `\(`) so all integral signs $\int_{a}^{b}$, limits, powers, and fractions render crisply across all devices.
-2. **Student F.I.O. (Ф.И.О.) Header:** Added dedicated `Ф.И.О. ученика` and `Класс` input fields directly at the top header of the site so students register their name right when opening the presentation.
-3. **Integrated Deployment URL:** Placed your Google Apps Script Web App URL (`https://script.google.com/macros/s/AKfycby9zRXh0fP2OlHhRjiVamXw9H7lKTgSJDGye5w10IVFVEsdJdnqG7aCBNl0GHBeJNxEpg/exec`) into the submission handler.

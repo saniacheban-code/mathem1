@@ -26,7 +26,7 @@
         }
     </script>
 
-    <!-- KaTeX CSS and JS for mathematical formula rendering -->
+    <!-- KaTeX CSS and JS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
@@ -57,7 +57,7 @@
                 </div>
             </div>
 
-            <!-- Student Active Info Display (Updated after registration) -->
+            <!-- Student Active Info Badge -->
             <div id="studentHeaderBadge" class="hidden items-center gap-3 bg-slate-900/80 px-3 py-1.5 rounded-xl border border-slate-700/80 text-xs">
                 <div class="flex items-center gap-1.5 text-brand-400 font-semibold">
                     <i data-lucide="user" class="w-3.5 h-3.5"></i>
@@ -81,12 +81,12 @@
             </div>
         </div>
 
-        <!-- Slide Wrapper Card -->
+        <!-- Slide Card Container -->
         <div class="bg-slate-800/90 border border-slate-700/80 rounded-2xl p-6 sm:p-8 shadow-2xl min-h-[480px] flex flex-col justify-between backdrop-blur-sm relative overflow-hidden">
             
             <div id="slidesContainer" class="flex-1">
 
-                <!-- SLIDE 0: REGISTRATION / START -->
+                <!-- SLIDE 0: REGISTRATION -->
                 <div class="slide slide-enter space-y-6">
                     <div class="text-center max-w-xl mx-auto space-y-3 pt-2">
                         <div class="inline-flex p-3 bg-brand-500/10 text-brand-400 rounded-2xl border border-brand-500/20 mb-2">
@@ -94,7 +94,7 @@
                         </div>
                         <h2 class="text-2xl sm:text-3xl font-bold text-white">Добро пожаловать на урок!</h2>
                         <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
-                            Перед началом прохождения теоретического материала и итогового тестирования, пожалуйста, укажите ваши данные:
+                            Укажите ваши данные для начала прохождения учебного материала и фиксации результатов в журнале:
                         </p>
                     </div>
 
@@ -116,7 +116,7 @@
                         </div>
 
                         <div id="registrationError" class="hidden text-xs text-rose-400 font-medium bg-rose-500/10 p-3 rounded-lg border border-rose-500/20 text-center">
-                            ⚠️ Пожалуйста, заполните оба поля для входа в урок!
+                            ⚠️ Заполните оба поля для входа в урок!
                         </div>
 
                         <button type="button" onclick="startLesson()" 
@@ -143,7 +143,7 @@
                     </ul>
                     <div class="p-4 bg-brand-900/30 border-l-4 border-brand-500 rounded-r-xl">
                         <p class="text-sm text-brand-200">
-                            <strong>Отрезок $[a; b]$</strong> называется <em>основанием</em> криволинейной трапеции. Если $f(x) \ge 0$, то площадь этой фигуры всегда является неотрицательной величиной.
+                            <strong>Отрезок $[a; b]$</strong> называется <em>основанием</em> криволинейной трапеции.
                         </p>
                     </div>
                 </div>
@@ -155,15 +155,15 @@
                     </div>
                     <h2 class="text-2xl sm:text-3xl font-bold text-white">2. Задача о вычислении площади</h2>
                     <p class="text-slate-300 leading-relaxed">
-                        Чтобы точно найти площадь $S$ криволинейной трапеции, применяется метод приближения прямоугольниками (суммы Римана):
+                        Чтобы вычислить площадь $S$ криволинейной трапеции:
                     </p>
                     <ol class="space-y-3 text-slate-300 list-decimal list-inside bg-slate-900/50 p-4 rounded-xl border border-slate-700/50">
-                        <li>Разбиваем отрезок $[a; b]$ на $n$ равных элементарных отрезков длиной $\Delta x = \frac{b - a}{n}$.</li>
-                        <li>На каждом отрезке строим прямоугольник высотой $f(x_i)$.</li>
-                        <li>Составляем сумму площадей прямоугольников: $S_n = \sum_{i=1}^{n} f(x_i) \cdot \Delta x$.</li>
+                        <li>Разобьем отрезок $[a; b]$ на $n$ равных элементарных отрезков длиной $\Delta x = \frac{b - a}{n}$.</li>
+                        <li>На каждом отрезке построим прямоугольник высотой $f(x_i)$.</li>
+                        <li>Сложим площади всех прямоугольников: $S_n = \sum_{i=1}^{n} f(x_i) \cdot \Delta x$.</li>
                     </ol>
                     <p class="text-slate-300">
-                        При неограниченном увеличении числа разбиений ($n \to \infty$) эта сумма стремится к точной площади фигуры $S$.
+                        При $n \to \infty$ эта сумма стремятся к точной площади фигуры $S$.
                     </p>
                 </div>
 
@@ -182,11 +182,11 @@
                     <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-sm">
                         <div class="bg-slate-900/60 p-3 rounded-lg border border-slate-700">
                             <span class="text-brand-400 font-bold block">$a$</span>
-                            Нижний предел интегрирования
+                            Нижний предел
                         </div>
                         <div class="bg-slate-900/60 p-3 rounded-lg border border-slate-700">
                             <span class="text-brand-400 font-bold block">$b$</span>
-                            Верхний предел интегрирования
+                            Верхний предел
                         </div>
                         <div class="bg-slate-900/60 p-3 rounded-lg border border-slate-700">
                             <span class="text-brand-400 font-bold block">$f(x)$</span>
@@ -198,18 +198,18 @@
                 <!-- SLIDE 4: THEORY 4 -->
                 <div class="slide hidden slide-enter space-y-4">
                     <div class="inline-flex items-center gap-2 px-3 py-1 bg-brand-500/10 text-brand-400 border border-brand-500/20 rounded-full text-xs font-semibold">
-                        Урок 4 • Главная формула
+                        Урок 4 • Формула
                     </div>
                     <h2 class="text-2xl sm:text-3xl font-bold text-white">4. Формула Ньютона-Лейбница</h2>
                     <p class="text-slate-300 leading-relaxed">
-                        Для точного и быстрого вычисления определенного интеграла применяется <strong>формула Ньютона-Лейбница</strong>:
+                        Основная формула для вычисления определенного интеграла:
                     </p>
                     <div class="my-4 p-5 bg-gradient-to-r from-slate-900 via-brand-950/40 to-slate-900 border border-brand-500/40 rounded-xl text-center shadow-lg">
                         $$\int_{a}^{b} f(x) \, dx = \left. F(x) \right|_{a}^{b} = F(b) - F(a)$$
                     </div>
                     <div class="p-4 bg-slate-900/70 border border-slate-700 rounded-xl">
                         <p class="text-slate-300 text-sm">
-                            Где $F(x)$ — любая <strong>первообразная</strong> функции $f(x)$ на отрезке $[a; b]$, то есть $F'(x) = f(x)$.
+                            Где $F(x)$ — одна из первообразных для функции $f(x)$, то есть $F'(x) = f(x)$.
                         </p>
                     </div>
                 </div>
@@ -222,15 +222,15 @@
                     <h2 class="text-2xl sm:text-3xl font-bold text-white">5. Свойства определенного интеграла</h2>
                     <div class="space-y-3">
                         <div class="p-3 bg-slate-900/60 rounded-xl border border-slate-700">
-                            <span class="text-brand-400 font-semibold">1. Вынос постоянного множителя:</span>
+                            <span class="text-brand-400 font-semibold">1. Вынос постоянной:</span>
                             $$\int_{a}^{b} k \cdot f(x) \, dx = k \int_{a}^{b} f(x) \, dx$$
                         </div>
                         <div class="p-3 bg-slate-900/60 rounded-xl border border-slate-700">
-                            <span class="text-brand-400 font-semibold">2. Интеграл от суммы функций:</span>
+                            <span class="text-brand-400 font-semibold">2. Интеграл от суммы:</span>
                             $$\int_{a}^{b} (f(x) \pm g(x)) \, dx = \int_{a}^{b} f(x) \, dx \pm \int_{a}^{b} g(x) \, dx$$
                         </div>
                         <div class="p-3 bg-slate-900/60 rounded-xl border border-slate-700">
-                            <span class="text-brand-400 font-semibold">3. Аддитивность отрезка ($c \in [a; b]$):</span>
+                            <span class="text-brand-400 font-semibold">3. Аддитивность отрезка:</span>
                             $$\int_{a}^{b} f(x) \, dx = \int_{a}^{c} f(x) \, dx + \int_{c}^{b} f(x) \, dx$$
                         </div>
                     </div>
@@ -239,25 +239,25 @@
                 <!-- SLIDE 6: THEORY 6 -->
                 <div class="slide hidden slide-enter space-y-4">
                     <div class="inline-flex items-center gap-2 px-3 py-1 bg-brand-500/10 text-brand-400 border border-brand-500/20 rounded-full text-xs font-semibold">
-                        Урок 6 • Алгоритм решения
+                        Урок 6 • Алгоритм
                     </div>
-                    <h2 class="text-2xl sm:text-3xl font-bold text-white">6. Алгоритм вычисления площади</h2>
+                    <h2 class="text-2xl sm:text-3xl font-bold text-white">6. Алгоритм решения задач</h2>
                     <div class="space-y-3 text-slate-300">
                         <div class="flex items-start gap-3 p-3 bg-slate-900/50 rounded-xl border border-slate-700">
                             <span class="bg-brand-600 text-white font-bold w-6 h-6 rounded-full flex items-center justify-center shrink-0 text-sm">1</span>
-                            <div><strong>Сделать чертеж:</strong> построить график $y = f(x)$ и прямые, найти пределы интегрирования $a$ и $b$.</div>
+                            <div>Построить чертеж фигуры и определить пределы $a$ и $b$.</div>
                         </div>
                         <div class="flex items-start gap-3 p-3 bg-slate-900/50 rounded-xl border border-slate-700">
                             <span class="bg-brand-600 text-white font-bold w-6 h-6 rounded-full flex items-center justify-center shrink-0 text-sm">2</span>
-                            <div><strong>Найти первообразную:</strong> вычислить $F(x)$ для заданной функции $f(x)$.</div>
+                            <div>Найти первообразную $F(x)$ для функции $f(x)$.</div>
                         </div>
                         <div class="flex items-start gap-3 p-3 bg-slate-900/50 rounded-xl border border-slate-700">
                             <span class="bg-brand-600 text-white font-bold w-6 h-6 rounded-full flex items-center justify-center shrink-0 text-sm">3</span>
-                            <div><strong>Подставить пределы:</strong> вычислить значения $F(b)$ и $F(a)$.</div>
+                            <div>Вычислить значения $F(b)$ и $F(a)$.</div>
                         </div>
                         <div class="flex items-start gap-3 p-3 bg-slate-900/50 rounded-xl border border-slate-700">
                             <span class="bg-brand-600 text-white font-bold w-6 h-6 rounded-full flex items-center justify-center shrink-0 text-sm">4</span>
-                            <div><strong>Найти разность:</strong> по формуле Ньютона-Лейбница рассчитать $S = F(b) - F(a)$.</div>
+                            <div>Рассчитать разность $S = F(b) - F(a)$.</div>
                         </div>
                     </div>
                 </div>
@@ -265,19 +265,19 @@
                 <!-- SLIDE 7: EXAMPLE 1 -->
                 <div class="slide hidden slide-enter space-y-4">
                     <div class="inline-flex items-center gap-2 px-3 py-1 bg-amber-500/10 text-amber-400 border border-amber-500/20 rounded-full text-xs font-semibold">
-                        Пример 1 • Разбор задачи
+                        Пример 1 • Разбор
                     </div>
                     <h2 class="text-2xl sm:text-3xl font-bold text-white">Подробный пример 1</h2>
                     <div class="bg-slate-900/80 p-4 rounded-xl border border-slate-700 space-y-3">
                         <p class="text-slate-200">
-                            <strong>Задание:</strong> Найти площадь криволинейной трапеции, ограниченной линиями $y = x^2$, $y = 0$, $x = 1$, $x = 3$.
+                            <strong>Задание:</strong> Найти площадь фигуры, ограниченной линиями $y = x^2$, $y = 0$, $x = 1$, $x = 3$.
                         </p>
                         <hr class="border-slate-700">
                         <p class="text-slate-300 font-semibold">Решение:</p>
                         <ol class="list-decimal list-inside space-y-2 text-slate-300 text-sm">
-                            <li>Функция $f(x) = x^2 \ge 0$ на отрезке $[1; 3]$. Пределы интегрирования: $a = 1, b = 3$.</li>
-                            <li>Находим первообразную: $F(x) = \dfrac{x^3}{3}$.</li>
-                            <li>По формуле Ньютона-Лейбница вычисляем интеграл:
+                            <li>$f(x) = x^2 \ge 0$ на $[1; 3]$. Пределы: $a = 1, b = 3$.</li>
+                            <li>Первообразная: $F(x) = \dfrac{x^3}{3}$.</li>
+                            <li>По формуле Ньютона-Лейбница:
                                 $$\int_{1}^{3} x^2 \, dx = \left. \frac{x^3}{3} \right|_{1}^{3} = \frac{3^3}{3} - \frac{1^3}{3} = \frac{27}{3} - \frac{1}{3} = \frac{26}{3} = 8\frac{2}{3}$$
                             </li>
                         </ol>
@@ -293,18 +293,17 @@
                     <h2 class="text-2xl sm:text-3xl font-bold text-white">Подробный пример 2</h2>
                     <div class="bg-slate-900/80 p-4 rounded-xl border border-slate-700 space-y-3">
                         <p class="text-slate-200">
-                            <strong>Задание:</strong> Вычислить определенный интеграл $\int_{0}^{\pi} \sin(x) \, dx$.
+                            <strong>Задание:</strong> Вычислить интеграл $\int_{0}^{\pi} \sin(x) \, dx$.
                         </p>
                         <hr class="border-slate-700">
                         <p class="text-slate-300 font-semibold">Решение:</p>
                         <ol class="list-decimal list-inside space-y-2 text-slate-300 text-sm">
-                            <li>Первообразная для $f(x) = \sin(x)$ равна $F(x) = -\cos(x)$.</li>
-                            <li>Подставляем верхний и нижний пределы интегрирования:
-                                $$F(\pi) = -\cos(\pi) = -(-1) = 1$$
-                                $$F(0) = -\cos(0) = -1$$
+                            <li>Первообразная: $F(x) = -\cos(x)$.</li>
+                            <li>Вычисляем значения на пределах:
+                                $$F(\pi) = -\cos(\pi) = -(-1) = 1, \quad F(0) = -\cos(0) = -1$$
                             </li>
-                            <li>Вычисляем разность по формуле:
-                                $$\int_{0}^{\pi} \sin(x) \, dx = \left. -\cos(x) \right|_{0}^{\pi} = (-\cos(\pi)) - (-\cos(0)) = 1 - (-1) = 2$$
+                            <li>Разность:
+                                $$\int_{0}^{\pi} \sin(x) \, dx = \left. -\cos(x) \right|_{0}^{\pi} = 1 - (-1) = 2$$
                             </li>
                         </ol>
                         <p class="text-brand-400 font-bold">Ответ: $2$</p>
@@ -319,41 +318,38 @@
                     <h2 class="text-xl sm:text-2xl font-bold text-white">Вопросы с выбором ответа</h2>
                     
                     <form id="quizForm" class="space-y-4 max-h-[340px] overflow-y-auto pr-2">
-                        <!-- Q1 -->
                         <div class="p-3 bg-slate-900/80 rounded-xl border border-slate-700 space-y-2">
-                            <p class="font-medium text-sm text-slate-200">1. Какая фигура называется криволинейной трапецией?</p>
+                            <p class="font-medium text-sm text-slate-200">1. Как называется фигура, ограниченная $y=f(x) \ge 0$, осью $Ox$ и $x=a, x=b$?</p>
                             <div class="space-y-1 text-sm text-slate-300">
                                 <label class="flex items-center gap-2 p-1.5 hover:bg-slate-800 rounded cursor-pointer">
-                                    <input type="radio" name="q1" value="0" class="accent-brand-500"> Фигура, ограниченная 4 прямыми отрезками
+                                    <input type="radio" name="q1" value="0" class="accent-brand-500"> Парабола
                                 </label>
                                 <label class="flex items-center gap-2 p-1.5 hover:bg-slate-800 rounded cursor-pointer">
-                                    <input type="radio" name="q1" value="1" class="accent-brand-500"> Фигура, ограниченная $y=f(x) \ge 0$, осью $Ox$ и $x=a, x=b$
+                                    <input type="radio" name="q1" value="1" class="accent-brand-500"> Криволинейная трапеция
                                 </label>
                                 <label class="flex items-center gap-2 p-1.5 hover:bg-slate-800 rounded cursor-pointer">
-                                    <input type="radio" name="q1" value="0" class="accent-brand-500"> Любой сектор круга
+                                    <input type="radio" name="q1" value="0" class="accent-brand-500"> Прямоугольник
                                 </label>
                             </div>
                         </div>
 
-                        <!-- Q2 -->
                         <div class="p-3 bg-slate-900/80 rounded-xl border border-slate-700 space-y-2">
-                            <p class="font-medium text-sm text-slate-200">2. Какая формула вычисляет определенный интеграл через первообразную?</p>
+                            <p class="font-medium text-sm text-slate-200">2. Какая формула вычисляет определенный интеграл?</p>
                             <div class="space-y-1 text-sm text-slate-300">
                                 <label class="flex items-center gap-2 p-1.5 hover:bg-slate-800 rounded cursor-pointer">
                                     <input type="radio" name="q2" value="1" class="accent-brand-500"> Формула Ньютона-Лейбница
                                 </label>
                                 <label class="flex items-center gap-2 p-1.5 hover:bg-slate-800 rounded cursor-pointer">
-                                    <input type="radio" name="q2" value="0" class="accent-brand-500"> Теорема Виета
+                                    <input type="radio" name="q2" value="0" class="accent-brand-500"> Теорема Пифагора
                                 </label>
                                 <label class="flex items-center gap-2 p-1.5 hover:bg-slate-800 rounded cursor-pointer">
-                                    <input type="radio" name="q2" value="0" class="accent-brand-500"> Бином Ньютона
+                                    <input type="radio" name="q2" value="0" class="accent-brand-500"> Формула Герона
                                 </label>
                             </div>
                         </div>
 
-                        <!-- Q3 -->
                         <div class="p-3 bg-slate-900/80 rounded-xl border border-slate-700 space-y-2">
-                            <p class="font-medium text-sm text-slate-200">3. Чему равен интеграл с одинаковыми пределами $\int_{a}^{a} f(x) \, dx$?</p>
+                            <p class="font-medium text-sm text-slate-200">3. Чему равен интеграл $\int_{a}^{a} f(x) \, dx$?</p>
                             <div class="space-y-1 text-sm text-slate-300">
                                 <label class="flex items-center gap-2 p-1.5 hover:bg-slate-800 rounded cursor-pointer">
                                     <input type="radio" name="q3" value="0" class="accent-brand-500"> $1$
@@ -367,41 +363,39 @@
                             </div>
                         </div>
 
-                        <!-- Q4 -->
                         <div class="p-3 bg-slate-900/80 rounded-xl border border-slate-700 space-y-2">
-                            <p class="font-medium text-sm text-slate-200">4. Чему равна одна из первообразных функции $f(x) = 3x^2$?</p>
+                            <p class="font-medium text-sm text-slate-200">4. Чему равна первообразная для $f(x) = 3x^2$?</p>
                             <div class="space-y-1 text-sm text-slate-300">
                                 <label class="flex items-center gap-2 p-1.5 hover:bg-slate-800 rounded cursor-pointer">
-                                    <input type="radio" name="q4" value="1" class="accent-brand-500"> $F(x) = x^3$
+                                    <input type="radio" name="q4" value="1" class="accent-brand-500"> $x^3$
                                 </label>
                                 <label class="flex items-center gap-2 p-1.5 hover:bg-slate-800 rounded cursor-pointer">
-                                    <input type="radio" name="q4" value="0" class="accent-brand-500"> $F(x) = 6x$
+                                    <input type="radio" name="q4" value="0" class="accent-brand-500"> $6x$
                                 </label>
                                 <label class="flex items-center gap-2 p-1.5 hover:bg-slate-800 rounded cursor-pointer">
-                                    <input type="radio" name="q4" value="0" class="accent-brand-500"> $F(x) = x^2$
+                                    <input type="radio" name="q4" value="0" class="accent-brand-500"> $x^2$
                                 </label>
                             </div>
                         </div>
 
-                        <!-- Q5 -->
                         <div class="p-3 bg-slate-900/80 rounded-xl border border-slate-700 space-y-2">
-                            <p class="font-medium text-sm text-slate-200">5. В чем заключается геометрический смысл определенного интеграла?</p>
+                            <p class="font-medium text-sm text-slate-200">5. Геометрический смысл определенного интеграла — это:</p>
                             <div class="space-y-1 text-sm text-slate-300">
                                 <label class="flex items-center gap-2 p-1.5 hover:bg-slate-800 rounded cursor-pointer">
-                                    <input type="radio" name="q5" value="0" class="accent-brand-500"> Длина графика функции
+                                    <input type="radio" name="q5" value="0" class="accent-brand-500"> Длина кривой
                                 </label>
                                 <label class="flex items-center gap-2 p-1.5 hover:bg-slate-800 rounded cursor-pointer">
-                                    <input type="radio" name="q5" value="1" class="accent-brand-500"> Площадь соответствующей криволинейной трапеции
+                                    <input type="radio" name="q5" value="1" class="accent-brand-500"> Площадь криволинейной трапеции
                                 </label>
                                 <label class="flex items-center gap-2 p-1.5 hover:bg-slate-800 rounded cursor-pointer">
-                                    <input type="radio" name="q5" value="0" class="accent-brand-500"> Угол наклона касательной
+                                    <input type="radio" name="q5" value="0" class="accent-brand-500"> Объем цилиндра
                                 </label>
                             </div>
                         </div>
                     </form>
                 </div>
 
-                <!-- SLIDE 10: TASKS & FINAL SUBMIT -->
+                <!-- SLIDE 10: TASKS & SUBMIT -->
                 <div class="slide hidden slide-enter space-y-4">
                     <div class="inline-flex items-center gap-2 px-3 py-1 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 rounded-full text-xs font-semibold">
                         Завершение • Практические задачи (5 баллов)
@@ -409,25 +403,22 @@
                     <h2 class="text-xl sm:text-2xl font-bold text-white">Задания с записью ответа</h2>
 
                     <div class="space-y-4">
-                        <!-- Task 1 -->
                         <div class="p-4 bg-slate-900/80 rounded-xl border border-slate-700 space-y-2">
                             <p class="text-sm text-slate-200">
-                                <strong>Задание 1 (2.5 балла):</strong> Вычислите площадь фигуры, ограниченной линиями $y = 3x^2$, осью $Ox$, $x = 0$ и $x = 2$.
+                                <strong>Задача 1 (2.5 балла):</strong> Вычислите площадь фигуры, ограниченной линиями $y = 3x^2$, осью $Ox$, $x = 0$ и $x = 2$.
                             </p>
                             <input type="text" id="task1Input" placeholder="Введите ответ (число)" 
                                 class="w-full bg-slate-800 border border-slate-600 rounded-lg px-3 py-2 text-sm text-white placeholder-slate-400 focus:outline-none focus:border-emerald-500">
                         </div>
 
-                        <!-- Task 2 -->
                         <div class="p-4 bg-slate-900/80 rounded-xl border border-slate-700 space-y-2">
                             <p class="text-sm text-slate-200">
-                                <strong>Задание 2 (2.5 балла):</strong> Вычислите интеграл $\int_{1}^{2} 4x \, dx$.
+                                <strong>Задача 2 (2.5 балла):</strong> Вычислите интеграл $\int_{1}^{2} 4x \, dx$.
                             </p>
                             <input type="text" id="task2Input" placeholder="Введите ответ (число)" 
                                 class="w-full bg-slate-800 border border-slate-600 rounded-lg px-3 py-2 text-sm text-white placeholder-slate-400 focus:outline-none focus:border-emerald-500">
                         </div>
 
-                        <!-- Status Message Modal/Banner -->
                         <div id="statusBanner" class="hidden p-4 rounded-xl text-sm font-medium transition"></div>
 
                         <button type="button" onclick="submitResults()" id="submitBtn" 
@@ -447,7 +438,6 @@
                     <i data-lucide="chevron-left" class="w-4 h-4"></i> Назад
                 </button>
 
-                <!-- Dots navigation indicator -->
                 <div id="dotsContainer" class="hidden sm:flex gap-1.5"></div>
 
                 <button id="nextBtn" onclick="navigateSlide(1)" 
@@ -459,8 +449,8 @@
     </main>
 
     <script>
-        // Updated Google Apps Script Web App Endpoint provided by user
-        const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzmsGiQ31IYfanqd59u09-L4Nn3MEQvvKDBSHM4_YWqp3S9Y1It4sSZHy3cnS6vqw14PA/exec";
+        // Updated Google Apps Script URL
+        const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzli64jYmEfTsmT2Rx8koxrYlmVgpcDBU2p-yiQ5Uf0srALCHakhzL4Ywb88ZPejOwzLA/exec";
 
         let currentSlide = 0;
         const slides = document.querySelectorAll('.slide');
@@ -479,13 +469,12 @@
             "Тестирование", "Практические задания"
         ];
 
-        // Generate slide dots for slides 1 to N
         slides.forEach((_, idx) => {
             const dot = document.createElement('div');
             dot.className = `w-2 h-2 rounded-full transition-all cursor-pointer ${idx === 0 ? 'bg-brand-500 w-4' : 'bg-slate-600'}`;
             dot.onclick = () => {
                 if (idx > 0 && (!document.getElementById('studentFIO').value.trim() || !document.getElementById('studentClass').value.trim())) {
-                    return; // Prevent skipping registration via dots
+                    return;
                 }
                 jumpToSlide(idx);
             };
@@ -504,7 +493,6 @@
 
             regError.classList.add('hidden');
             
-            // Update Top Header Badge
             document.getElementById('activeStudentName').innerText = fio;
             document.getElementById('activeStudentClass').innerText = group;
             document.getElementById('studentHeaderBadge').classList.remove('hidden');
@@ -536,18 +524,15 @@
                 }
             });
 
-            // Update Header & Progress Bar
             slideCounter.innerText = `Шаг ${currentSlide + 1} из ${slides.length}`;
             slideCategory.innerText = slideCategories[currentSlide] || "Презентация";
             
             const progressPercent = ((currentSlide + 1) / slides.length) * 100;
             progressBar.style.width = `${progressPercent}%`;
 
-            // Buttons state
             prevBtn.disabled = currentSlide === 0;
             nextBtn.disabled = currentSlide === slides.length - 1;
 
-            // Dots state
             Array.from(dotsContainer.children).forEach((dot, idx) => {
                 if (idx === currentSlide) {
                     dot.className = "w-4 h-2 bg-brand-500 rounded-full transition-all";
@@ -564,7 +549,6 @@
             const fio = document.getElementById('studentFIO').value.trim();
             const group = document.getElementById('studentClass').value.trim();
 
-            // Block moving forward if registration is incomplete
             if (currentSlide === 0 && direction > 0 && (!fio || !group)) {
                 document.getElementById('registrationError').classList.remove('hidden');
                 return;
@@ -582,7 +566,6 @@
         }
 
         function calculateScores() {
-            // Quiz score (5 questions max 5 points)
             let quizScore = 0;
             for (let i = 1; i <= 5; i++) {
                 const checkedOption = document.querySelector(`input[name="q${i}"]:checked`);
@@ -591,15 +574,11 @@
                 }
             }
 
-            // Task score (2 tasks max 5 points - 2.5 pts each)
             let taskScore = 0;
             const ans1 = document.getElementById('task1Input').value.trim().replace(',', '.');
             const ans2 = document.getElementById('task2Input').value.trim().replace(',', '.');
 
-            // Task 1 correct answer: 8
             if (ans1 === "8") taskScore += 2.5;
-
-            // Task 2 correct answer: 6
             if (ans2 === "6") taskScore += 2.5;
 
             return {
@@ -619,7 +598,7 @@
 
             if (!studentFIO || !studentClass) {
                 banner.className = "p-4 rounded-xl text-sm font-medium bg-amber-500/20 text-amber-300 border border-amber-500/40 block";
-                banner.innerText = "⚠️ Ошибка: Данные ученика не заполнены. Пожалуйста, вернитесь на Слайд 1.";
+                banner.innerText = "⚠️ Ошибка: Заполните Ф.И.О. и Класс на Слайде 1.";
                 return;
             }
 
@@ -628,7 +607,7 @@
             submitBtn.disabled = true;
             submitBtn.classList.add('opacity-50', 'cursor-not-allowed');
             banner.className = "p-4 rounded-xl text-sm font-medium bg-blue-500/20 text-blue-300 border border-blue-500/40 block";
-            banner.innerText = "⏳ Идет отправка результатов в Google Таблицу...";
+            banner.innerText = "⏳ Отправка результатов в Google Таблицу...";
 
             const payload = {
                 studentName: studentFIO,
@@ -659,13 +638,12 @@
             .catch((err) => {
                 console.error("Submission error:", err);
                 banner.className = "p-4 rounded-xl text-sm font-medium bg-red-500/20 text-red-300 border border-red-500/40 block";
-                banner.innerText = "❌ Произошла ошибка при отправке. Проверьте подключение к интернету.";
+                banner.innerText = "❌ Ошибка при отправке. Проверьте подключение к интернету.";
                 submitBtn.disabled = false;
                 submitBtn.classList.remove('opacity-50', 'cursor-not-allowed');
             });
         }
 
-        // Initialize math and icon rendering on page load
         window.addEventListener('DOMContentLoaded', () => {
             renderMath();
             lucide.createIcons();
